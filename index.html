@@ -4,15 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <script src="./node_modules/tone/build/Tone.js"></script> -->
+    <script src="./node_modules/tone/build/Tone.js"></script>
 </head>
 <body>
     <h1>Hello World</h1>
     <div class="navbar">
         navbar
     </div>
-    <script type="module" src="./app.js"></script>
+    <script type="module" src="./src/app.js"></script>
     <div class=drum-machine-body>
+        <div class="play-pause-stop-buttons">
+            <button class="play-pause-button">
+                play/pause
+            </button>
+            <button class="stop-button">
+                stop
+            </button>
+        </div>
+        <div class="effects-controls">
+            <div class="bitcrush">
+                <p>Bitcrusher:</p>
+                <input type="range" min="0" max="50" value="0" class="bitcrush-wetness">
+            </div>
+            <div class="delay">
+                <p>Delay:</p>
+                <input type="range" min="0" max="50" value="0" class="delay-wetness">
+            </div>
+        </div>
         <div class="drum-machine-left-column">
             
         </div>

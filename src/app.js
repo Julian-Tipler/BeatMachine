@@ -1,5 +1,4 @@
-import * as Tone from 'tone'
-// import * as Tone from "../node_modules/tone/build/Tone.js"
+
 
 window.addEventListener('DOMContentLoaded', () => {
 
@@ -33,17 +32,110 @@ const generateRows = (rowNum) => {
         }
         drumMachineButtons.appendChild(row)
     }
+
+    //testing
+    let zeroAndEight = document.querySelectorAll('.row-0.col-0,.row-0.col-8')
+    zeroAndEight.forEach(el=> {
+        el.checked=true
+    })
+    let fourAndTwelve = document.querySelectorAll('.row-1.col-4,.row-1.col-12')
+        fourAndTwelve.forEach(el=> {
+        el.checked=true
+    })
+    //testing
+    
 }
 generateRows(8);
 
-function sequencer(){
-    const kick = new Tone.Player('../assets/Thumpy.wav').toMaster();
-    let index=0;
 
-    const kickInputs = document.querySelectorAll(".full-row-1")
+function sequencer(){
+    document.documentElement.addEventListener("mousedown", () => {
+        if (Tone.context.state !== 'running') {
+            Tone.context.resume();
+        }
+    })
+    //effects
+    const delay = new Tone.FeedbackDelay("8n", 0.5).toDestination()
+    const bitCrusher = new Tone.BitCrusher(1).connect(delay)
+//automation
+    //delay
+    delay.set({wet:0})
+    document.querySelector('.delay-wetness').addEventListener('input', (e) => {
+        e.preventDefault
+        delay.set({
+            wet: e.currentTarget.value/100
+        })
+    })
+    //bitcrusher
+    bitCrusher.set({wet:0})
+    document.querySelector('.bitcrush-wetness').addEventListener('input', (e) => {
+        e.preventDefault
+        bitCrusher.set({
+            wet: e.currentTarget.value/100
+        })
+    })
+    //samples
+    const kick = new Tone.Player('../assets/Thumpy.wav').connect(bitCrusher);
+    const snare = new Tone.Player('../assets/good-disco-snare_2.wav').connect(bitCrusher);
+    
+
+    
+    let index=0;
+    let playing = false
+
+    Tone.Transport.scheduleRepeat(repeat,'8n')
+     
+
+    function repeat() {
+        let step = index % 16;
+
+        let kickInputs = document.querySelector(`.full-row-0 input:nth-child(${step + 1})`)
+        if(kickInputs.checked){
+            kick.start()
+        }
+        
+        let snareInputs = document.querySelector(`.full-row-1 input:nth-child(${step + 1})`)
+        if(snareInputs.checked){
+            snare.start()
+        }
+        index++
+    }
+
+    const playPauseTrack = ()=> {
+        if (playing === false) {
+            Tone.Transport.start()
+            playing = true
+        } else {
+            Tone.Transport.pause()
+            playing = false
+        }
+        
+    }
+
+    const stopTrack = ()=> {
+        Tone.Transport.stop()
+        playing = false
+        index = 0
+    }
+
+
+    const playButton = document.querySelector('.play-pause-button')
+    playButton.addEventListener('click', ()=> playPauseTrack());
+
+    const stopButton = document.querySelector('.stop-button')
+    stopButton.addEventListener('click', ()=> stopTrack());
+
+    document.body.onkeyup = function(e){
+    if(e.keyCode == 32){
+        playPauseTrack() 
+    }
+    } 
 }
 
-sequencer()
+sequencer();
+
+
+
 //do a for loop that generates 8 rows of buttons
 
 // var synth = new Tone.Synth()
@@ -365,4 +457,4 @@ sequencer()
 //         columnCounter++;
 //     }
 
-// });
+// })
