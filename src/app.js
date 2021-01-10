@@ -54,50 +54,100 @@ function sequencer(){
             Tone.context.resume();
         }
     })
+
+    let index=0;
+    let playing = false
+
+    Tone.Transport.bpm.value = 80;
+    Tone.Transport.scheduleRepeat(repeat,'16n')
+
     //effects
-    const delay = new Tone.FeedbackDelay("8n", 0.5).toDestination()
-    const bitCrusher = new Tone.BitCrusher(1).connect(delay)
+    const autoFilter = new Tone.AutoFilter("4n")
+    const delay = new Tone.FeedbackDelay("8n")
+    const bitCrusher = new Tone.BitCrusher(1)
+    
+
 //automation
+    //bpm
+    document.querySelector('.bpm-wetness').addEventListener('input', (e)=> {
+        e.preventDefault
+        let bpm = e.currentTarget.value
+        Tone.Transport.bpm.set({
+            value:bpm
+        })
+        document.querySelector('.bpm-visual').innerHTML = bpm
+        let genre = document.querySelector('.genre')
+        if (bpm <= 100) {
+            console.log('ping slow')
+            genre.innerHTML = "Hip Hop/Slow Rock"
+        }
+        if (100 < bpm  && bpm <= 135) {
+            console.log('ping medium')
+            genre.innerHTML = "Electronic Dance Music/Pop Music/Rock"
+        }
+        if (135 < bpm) {
+            genre.innerHTML = "Techno/Drum and Bass"
+        } 
+    })
+    // document.querySelector('.bpm-swing').addEventListener('input', (e) => {
+    //     e.preventDefault
+    //     let swing = e.currentTarget.value/100
+    //     Tone.Transport.bpm.swing = swing
+    //     console.log(Tone.Transport.bpm.swing)
+    // })
+
+    //autoFilter
+    autoFilter.set({wet:0})
+    document.querySelector('.auto-filter-wetness').addEventListener('input', (e)=> {
+        e.preventDefault
+        autoFilter.set({
+            wet:e.currentTarget.value/100
+        })
+    })
     //delay
     delay.set({wet:0})
     document.querySelector('.delay-wetness').addEventListener('input', (e) => {
         e.preventDefault
+        let wet = e.currentTarget.value/100
         delay.set({
-            wet: e.currentTarget.value/100
+            wet: wet
         })
     })
     //bitcrusher
     bitCrusher.set({wet:0})
     document.querySelector('.bitcrush-wetness').addEventListener('input', (e) => {
         e.preventDefault
+        let wet = e.currentTarget.value/100
         bitCrusher.set({
-            wet: e.currentTarget.value/100
+            wet: wet
         })
-    })
+    }) 
     //samples
-    const kick = new Tone.Player('../assets/Thumpy.wav').connect(bitCrusher);
-    const snare = new Tone.Player('../assets/good-disco-snare_2.wav').connect(bitCrusher);
-    
+    const kick = new Tone.Player('../assets/Thumpy.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+    const snare = new Tone.Player('../assets/good-disco-snare_2.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+    const hat = new Tone.Player('../assets/lofi-hat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
 
     
-    let index=0;
-    let playing = false
 
-    Tone.Transport.scheduleRepeat(repeat,'8n')
-     
 
-    function repeat() {
+    function repeat(time) {
         let step = index % 16;
 
         let kickInputs = document.querySelector(`.full-row-0 input:nth-child(${step + 1})`)
         if(kickInputs.checked){
-            kick.start()
+            kick.start(time)
         }
         
         let snareInputs = document.querySelector(`.full-row-1 input:nth-child(${step + 1})`)
         if(snareInputs.checked){
-            snare.start()
+            snare.start(time)
         }
+
+        let hatInputs = document.querySelector(`.full-row-2 input:nth-child(${step + 1})`)
+        if (hatInputs.checked){
+            hat.start(time)
+        }
+
         index++
     }
 
@@ -105,17 +155,22 @@ function sequencer(){
         if (playing === false) {
             Tone.Transport.start()
             playing = true
+            document.querySelector('.play-pause-button>i').className = 'far fa-play-circle'
+            
         } else {
             Tone.Transport.pause()
             playing = false
+            document.querySelector('.play-pause-button>i').className = 'fas fa-play-circle'
+
         }
-        
     }
 
     const stopTrack = ()=> {
         Tone.Transport.stop()
         playing = false
         index = 0
+        document.querySelector('.play-pause-button>i').className = 'fas fa-play-circle'
+
     }
 
 
