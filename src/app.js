@@ -1,5 +1,4 @@
-
-
+import * as Tone from 'tone'
 window.addEventListener('DOMContentLoaded', () => {
 
 //samples column
@@ -126,9 +125,6 @@ function sequencer(){
     const kick = new Tone.Player('../assets/Thumpy.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
     const snare = new Tone.Player('../assets/good-disco-snare_2.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
     const hat = new Tone.Player('../assets/lofi-hat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
-
-    
-
 
     function repeat(time) {
         let step = index % 16;
