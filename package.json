@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "dev": "webpack --watch --mode=development",
+    "webpack": "webpack --mode=development --watch",
     "prod": "webpack --mode=production",
     "start": "nodemon --exec babel-node app.js"
   },
@@ -12,17 +12,18 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "babel-loader": "^8.2.2",
-    "path": "^0.12.7",
-    "tone": "^14.7.58",
-    "webpack": "^5.11.1",
-    "webpack-cli": "^4.3.1"
-  },
-  "devDependencies": {
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
     "@babel/node": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "babel-loader": "^8.2.2",
+    "path": "^0.12.7",
+    "tone": "^14.7.58",
+    "webpack": "^5.12.3",
+    "webpack-cli": "^4.3.1"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.7",
     "source-map-loader": "^2.0.0"
   }
