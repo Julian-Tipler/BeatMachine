@@ -25408,9 +25408,9 @@ window.addEventListener('DOMContentLoaded', function () {
   //samples column
   (function () {
     var drumMachineLeftColumn = document.body.querySelector('.drum-machine-left-column');
-    var names = ['kick'];
+    var names = ['kick', 'snare', 'hat', 'hat 2', 'percussion 1', 'percussion 2', 'percussion 3', 'percussion 4'];
 
-    for (var i = 0; i < 1; i++) {
+    for (var i = 0; i < names.length; i++) {
       var sampleName = document.createElement('select');
       sampleName.className = "samples-column-sampleName";
       var option1 = document.createElement('option');
@@ -25436,7 +25436,7 @@ window.addEventListener('DOMContentLoaded', function () {
       }
 
       drumMachineButtons.appendChild(row);
-    } //testing
+    } //prefilled
 
 
     var zeroAndEight = document.querySelectorAll('.row-0.col-0,.row-0.col-8');
@@ -25446,7 +25446,11 @@ window.addEventListener('DOMContentLoaded', function () {
     var fourAndTwelve = document.querySelectorAll('.row-1.col-4,.row-1.col-12');
     fourAndTwelve.forEach(function (el) {
       el.checked = true;
-    }); //testing
+    });
+    var inbetweenNotes = document.querySelectorAll('.row-2.col-1,.row-2.col-2,.row-2.col-3,.row-2.col-5,.row-2.col-6,.row-2.col-7,.row-2.col-9,.row-2.col-10,.row-2.col-11,.row-2.col-13,.row-2.col-14,.row-2.col-15');
+    inbetweenNotes.forEach(function (el) {
+      el.checked = true;
+    });
   };
 
   generateRows(8);
@@ -25460,9 +25464,12 @@ window.addEventListener('DOMContentLoaded', function () {
     var index = 0;
     var playing = false;
     Tone__WEBPACK_IMPORTED_MODULE_0__.Transport.bpm.value = 80;
-    Tone__WEBPACK_IMPORTED_MODULE_0__.Transport.scheduleRepeat(repeat, '16n'); //effects
+    Tone__WEBPACK_IMPORTED_MODULE_0__.Transport.scheduleRepeat(repeat, '16n');
+    Tone__WEBPACK_IMPORTED_MODULE_0__.Transport.set({
+      swingSubdivision: '16n'
+    }); //effects
 
-    var autoFilter = new Tone__WEBPACK_IMPORTED_MODULE_0__.AutoFilter("4n");
+    var autoFilter = new Tone__WEBPACK_IMPORTED_MODULE_0__.AutoFilter(40, 40);
     var delay = new Tone__WEBPACK_IMPORTED_MODULE_0__.FeedbackDelay("8n");
     var bitCrusher = new Tone__WEBPACK_IMPORTED_MODULE_0__.BitCrusher(1); //automation
     //bpm
@@ -25489,21 +25496,24 @@ window.addEventListener('DOMContentLoaded', function () {
       if (135 < bpm) {
         genre.innerHTML = "Techno/Drum and Bass";
       }
-    }); // document.querySelector('.bpm-swing').addEventListener('input', (e) => {
-    //     e.preventDefault
-    //     let swing = e.currentTarget.value/100
-    //     Tone.Transport.bpm.swing = swing
-    //     console.log(Tone.Transport.bpm.swing)
-    // })
-    //autoFilter
+    });
+    document.querySelector('.bpm-swing').addEventListener('input', function (e) {
+      e.preventDefault;
+      var swing = e.currentTarget.value / 100;
+      Tone__WEBPACK_IMPORTED_MODULE_0__.Transport.swing = swing;
+      console.log(Tone__WEBPACK_IMPORTED_MODULE_0__.Transport.swing);
+    }); //autoFilter
 
     autoFilter.set({
-      wet: 0
+      wet: 1
     });
-    document.querySelector('.auto-filter-wetness').addEventListener('input', function (e) {
+    autoFilter.set({
+      baseFrequency: 20000
+    });
+    document.querySelector('.auto-filter-frequency').addEventListener('input', function (e) {
       e.preventDefault;
       autoFilter.set({
-        wet: e.currentTarget.value / 100
+        baseFrequency: Math.pow(e.currentTarget.value, 1.9) + 40
       });
     }); //delay
 
@@ -25532,6 +25542,7 @@ window.addEventListener('DOMContentLoaded', function () {
     var kick = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../assets/Thumpy.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
     var snare = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../assets/good-disco-snare_2.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
     var hat = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../assets/lofi-hat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
+    var openHat = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../assets/open-disco-hat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
 
     function repeat(time) {
       var step = index % 16;
@@ -25551,6 +25562,12 @@ window.addEventListener('DOMContentLoaded', function () {
 
       if (hatInputs.checked) {
         hat.start(time);
+      }
+
+      var openHatInputs = document.querySelector(".full-row-3 input:nth-child(".concat(step + 1, ")"));
+
+      if (openHatInputs.checked) {
+        openHat.start(time);
       }
 
       index++;

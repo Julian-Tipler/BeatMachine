@@ -1,0 +1,20 @@
+/* div {
+    background-color: black;
+} */
+
+
+
+
+
+
+.drum-machine-board {
+    display: flex;
+
+}
+
+.drum-machine-left-column {
+    display: flex;
+    flex-direction: column;
+    width: 6%
+}
+

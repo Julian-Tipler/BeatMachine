@@ -1,189 +1,199 @@
 import * as Tone from 'Tone'
 window.addEventListener('DOMContentLoaded', () => {
 
-//samples column
-(() => {
-    let drumMachineLeftColumn = document.body.querySelector('.drum-machine-left-column');
-    let names = ['kick']
-    for (let i = 0; i <1; i++) {
-        let sampleName = document.createElement('select');
-        sampleName.className = `samples-column-sampleName`;
+    //samples column
+    (() => {
+        let drumMachineLeftColumn = document.body.querySelector('.drum-machine-left-column');
+        let names = ['kick','snare','hat','hat 2','percussion 1', 'percussion 2', 'percussion 3', 'percussion 4']
+            for (let i = 0; i <names.length; i++) {
+                let sampleName = document.createElement('select');
+                sampleName.className = `samples-column-sampleName`;
 
-        let option1 = document.createElement('option');
-        option1.innerHTML = names[i];
+                let option1 = document.createElement('option');
+                option1.innerHTML = names[i];
 
-        sampleName.appendChild(option1);
-        drumMachineLeftColumn.appendChild(sampleName)
-    }
-})()
+                sampleName.appendChild(option1);
+                drumMachineLeftColumn.appendChild(sampleName)
+            }
+    })()
 
-//generateOneRow
-const generateRows = (rowNum) => {
-    let drumMachineButtons = document.body.querySelector('.drum-machine-buttons')
-    for (let i = 0; i < rowNum; i++) {
-        let row = document.createElement('div')
-        row.className=`full-row-${i}`
-        for (let j = 0; j < 16; j++) {
-            let button = document.createElement('input');
-            button.classList.add(`row-${i}`, `col-${j}`,`drum-machine-button`)
-            button.type = 'checkbox'
-            row.appendChild(button)
+    //generateOneRow
+    const generateRows = (rowNum) => {
+        let drumMachineButtons = document.body.querySelector('.drum-machine-buttons')
+        for (let i = 0; i < rowNum; i++) {
+            let row = document.createElement('div')
+            row.className=`full-row-${i}`
+            for (let j = 0; j < 16; j++) {
+                let button = document.createElement('input');
+                button.classList.add(`row-${i}`, `col-${j}`,`drum-machine-button`)
+                button.type = 'checkbox'
+                row.appendChild(button)
+            }
+            drumMachineButtons.appendChild(row)
         }
-        drumMachineButtons.appendChild(row)
-    }
 
-    //testing
-    let zeroAndEight = document.querySelectorAll('.row-0.col-0,.row-0.col-8')
-    zeroAndEight.forEach(el=> {
-        el.checked=true
-    })
-    let fourAndTwelve = document.querySelectorAll('.row-1.col-4,.row-1.col-12')
-        fourAndTwelve.forEach(el=> {
-        el.checked=true
-    })
-    //testing
-    
-}
-generateRows(8);
-
-
-function sequencer(){
-    document.documentElement.addEventListener("mousedown", () => {
-        if (Tone.context.state !== 'running') {
-            Tone.context.resume();
-        }
-    })
-
-    let index=0;
-    let playing = false
-
-    Tone.Transport.bpm.value = 80;
-    Tone.Transport.scheduleRepeat(repeat,'16n')
-
-    //effects
-    const autoFilter = new Tone.AutoFilter("4n")
-    const delay = new Tone.FeedbackDelay("8n")
-    const bitCrusher = new Tone.BitCrusher(1)
-    
-
-//automation
-    //bpm
-    document.querySelector('.bpm-wetness').addEventListener('input', (e)=> {
-        e.preventDefault
-        let bpm = e.currentTarget.value
-        Tone.Transport.bpm.set({
-            value:bpm
+        //prefilled
+        let zeroAndEight = document.querySelectorAll('.row-0.col-0,.row-0.col-8')
+        zeroAndEight.forEach(el=> {
+            el.checked=true
         })
-        document.querySelector('.bpm-visual').innerHTML = bpm
-        let genre = document.querySelector('.genre')
-        if (bpm <= 100) {
-            console.log('ping slow')
-            genre.innerHTML = "Hip Hop/Slow Rock"
-        }
-        if (100 < bpm  && bpm <= 135) {
-            console.log('ping medium')
-            genre.innerHTML = "Electronic Dance Music/Pop Music/Rock"
-        }
-        if (135 < bpm) {
-            genre.innerHTML = "Techno/Drum and Bass"
-        } 
-    })
-    // document.querySelector('.bpm-swing').addEventListener('input', (e) => {
-    //     e.preventDefault
-    //     let swing = e.currentTarget.value/100
-    //     Tone.Transport.bpm.swing = swing
-    //     console.log(Tone.Transport.bpm.swing)
-    // })
-
-    //autoFilter
-    autoFilter.set({wet:0})
-    document.querySelector('.auto-filter-wetness').addEventListener('input', (e)=> {
-        e.preventDefault
-        autoFilter.set({
-            wet:e.currentTarget.value/100
+        let fourAndTwelve = document.querySelectorAll('.row-1.col-4,.row-1.col-12')
+            fourAndTwelve.forEach(el=> {
+            el.checked=true
         })
-    })
-    //delay
-    delay.set({wet:0})
-    document.querySelector('.delay-wetness').addEventListener('input', (e) => {
-        e.preventDefault
-        let wet = e.currentTarget.value/100
-        delay.set({
-            wet: wet
-        })
-    })
-    //bitcrusher
-    bitCrusher.set({wet:0})
-    document.querySelector('.bitcrush-wetness').addEventListener('input', (e) => {
-        e.preventDefault
-        let wet = e.currentTarget.value/100
-        bitCrusher.set({
-            wet: wet
-        })
-    }) 
-    //samples
-    const kick = new Tone.Player('../assets/Thumpy.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
-    const snare = new Tone.Player('../assets/good-disco-snare_2.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
-    const hat = new Tone.Player('../assets/lofi-hat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
-
-    function repeat(time) {
-        let step = index % 16;
-
-        let kickInputs = document.querySelector(`.full-row-0 input:nth-child(${step + 1})`)
-        if(kickInputs.checked){
-            kick.start(time)
-        }
+        let inbetweenNotes = document.querySelectorAll('.row-2.col-1,.row-2.col-2,.row-2.col-3,.row-2.col-5,.row-2.col-6,.row-2.col-7,.row-2.col-9,.row-2.col-10,.row-2.col-11,.row-2.col-13,.row-2.col-14,.row-2.col-15')
+            inbetweenNotes.forEach(el=> {
+            el.checked=true
+            })
         
-        let snareInputs = document.querySelector(`.full-row-1 input:nth-child(${step + 1})`)
-        if(snareInputs.checked){
-            snare.start(time)
-        }
-
-        let hatInputs = document.querySelector(`.full-row-2 input:nth-child(${step + 1})`)
-        if (hatInputs.checked){
-            hat.start(time)
-        }
-
-        index++
     }
+    generateRows(8);
 
-    const playPauseTrack = ()=> {
-        if (playing === false) {
-            Tone.Transport.start()
-            playing = true
-            document.querySelector('.play-pause-button>i').className = 'far fa-play-circle'
+    function sequencer(){
+        document.documentElement.addEventListener("mousedown", () => {
+            if (Tone.context.state !== 'running') {
+                Tone.context.resume();
+            }
+        })
+
+        let index=0;
+        let playing = false
+
+        Tone.Transport.bpm.value = 80;
+        Tone.Transport.scheduleRepeat(repeat,'16n')
+        Tone.Transport.set({swingSubdivision:'16n'})
+
+        //effects
+        const autoFilter = new Tone.AutoFilter(40,40)
+        const delay = new Tone.FeedbackDelay("8n")
+        const bitCrusher = new Tone.BitCrusher(1)
+        
+    //automation
+        //bpm
+        document.querySelector('.bpm-wetness').addEventListener('input', (e)=> {
+            e.preventDefault
+            let bpm = e.currentTarget.value
+            Tone.Transport.bpm.set({
+                value:bpm
+            })
+        document.querySelector('.bpm-visual').innerHTML = bpm
+            let genre = document.querySelector('.genre')
+            if (bpm <= 100) {
+                console.log('ping slow')
+                genre.innerHTML = "Hip Hop/Slow Rock"
+            }
+            if (100 < bpm  && bpm <= 135) {
+                console.log('ping medium')
+                genre.innerHTML = "Electronic Dance Music/Pop Music/Rock"
+            }
+            if (135 < bpm) {
+                genre.innerHTML = "Techno/Drum and Bass"
+            } 
+        })
+        document.querySelector('.bpm-swing').addEventListener('input', (e) => {
+            e.preventDefault
+            let swing = e.currentTarget.value/100
+            Tone.Transport.swing = swing
+            console.log(Tone.Transport.swing)
+        })
+
+        //autoFilter
+        autoFilter.set({wet:1})
+        autoFilter.set({baseFrequency: 20000})
+
+        document.querySelector('.auto-filter-frequency').addEventListener('input', (e)=> {
+            e.preventDefault
+            autoFilter.set({
+                baseFrequency:(Math.pow(e.currentTarget.value,1.9)+40)
+            })
+        })
+        //delay
+        delay.set({wet:0})
+        document.querySelector('.delay-wetness').addEventListener('input', (e) => {
+            e.preventDefault
+            let wet = e.currentTarget.value/100
+            delay.set({
+                wet: wet
+            })
+        })
+        //bitcrusher
+        bitCrusher.set({wet:0})
+        document.querySelector('.bitcrush-wetness').addEventListener('input', (e) => {
+            e.preventDefault
+            let wet = e.currentTarget.value/100
+            bitCrusher.set({
+                wet: wet
+            })
+        }) 
+        //samples
+        const kick = new Tone.Player('../assets/Thumpy.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const snare = new Tone.Player('../assets/good-disco-snare_2.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const hat = new Tone.Player('../assets/lofi-hat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const openHat = new Tone.Player('../assets/open-disco-hat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+
+
+        function repeat(time) {
+            let step = index % 16;
+
+            let kickInputs = document.querySelector(`.full-row-0 input:nth-child(${step + 1})`)
+            if(kickInputs.checked){
+                kick.start(time)
+            }
             
-        } else {
-            Tone.Transport.pause()
+            let snareInputs = document.querySelector(`.full-row-1 input:nth-child(${step + 1})`)
+            if(snareInputs.checked){
+                snare.start(time)
+            }
+
+            let hatInputs = document.querySelector(`.full-row-2 input:nth-child(${step + 1})`)
+            if (hatInputs.checked){
+                hat.start(time)
+            }
+
+            let openHatInputs = document.querySelector(`.full-row-3 input:nth-child(${step + 1})`)
+            if (openHatInputs.checked){
+                openHat.start(time)
+            }
+
+            index++
+        }
+
+        const playPauseTrack = ()=> {
+            if (playing === false) {
+                Tone.Transport.start()
+                playing = true
+                document.querySelector('.play-pause-button>i').className = 'far fa-play-circle'
+                
+            } else {
+                Tone.Transport.pause()
+                playing = false
+                document.querySelector('.play-pause-button>i').className = 'fas fa-play-circle'
+
+            }
+        }
+
+        const stopTrack = ()=> {
+            Tone.Transport.stop()
             playing = false
+            index = 0
             document.querySelector('.play-pause-button>i').className = 'fas fa-play-circle'
 
         }
+
+        const playButton = document.querySelector('.play-pause-button')
+        playButton.addEventListener('click', ()=> playPauseTrack());
+
+        const stopButton = document.querySelector('.stop-button')
+        stopButton.addEventListener('click', ()=> stopTrack());
+
+        document.body.onkeyup = function(e){
+        if(e.keyCode == 32){
+            playPauseTrack() 
+        }
+        } 
     }
 
-    const stopTrack = ()=> {
-        Tone.Transport.stop()
-        playing = false
-        index = 0
-        document.querySelector('.play-pause-button>i').className = 'fas fa-play-circle'
-
-    }
-
-
-    const playButton = document.querySelector('.play-pause-button')
-    playButton.addEventListener('click', ()=> playPauseTrack());
-
-    const stopButton = document.querySelector('.stop-button')
-    stopButton.addEventListener('click', ()=> stopTrack());
-
-    document.body.onkeyup = function(e){
-    if(e.keyCode == 32){
-        playPauseTrack() 
-    }
-    } 
-}
-
-sequencer();
+    sequencer();
 
 
 

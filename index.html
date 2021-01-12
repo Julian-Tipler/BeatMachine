@@ -5,15 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="styling.css">
     <script src="./dist/bundle.js"></script>
 </head>
 <body>
     <h1>Drum Machine</h1>
     <div class="navbar">
-        navbar
+        Welcome
     </div>
     <script type="module" src="./src/app.js"></script>
     <div class=drum-machine-body>
+        <div class="effects-controls">
+            <div class="bpm">
+                <div>BPM (beats per minute):</div>
+                <div class="bpm-visual">
+                    128
+                </div>
+                <div class='bpm-slider-and-genre'>
+                    <input type="range" min="70" max="160" value="80" class="bpm-wetness">
+                    <div class="genre">
+                        Dance/edm
+                    </div>
+                </div>
+                <div>Swing:</div>
+                <input type="range" min="0" max="50" value="0" class="bpm-swing">
+                
+            </div>
+            <div class="auto-filter">
+                <div>autoFilter:</div>
+                <input type="range" min="1" max="100" value="100" class="auto-filter-frequency">
+            </div>
+            <div class="bitcrush">
+                <div>Bitcrusher:</div>
+                <input type="range" min="0" max="50" value="0" class="bitcrush-wetness">
+            </div>
+            <div class="delay">
+                <div>Delay:</div>
+                <input type="range" min="0" max="50" value="0" class="delay-wetness">
+            </div>
+        </div>
         <div class="play-pause-stop-buttons">
             <button class="play-pause-button">
                 <i class="fas fa-play-circle"></i>
@@ -22,37 +52,13 @@
                 <i class="fas fa-stop-circle"></i>
             </button>
         </div>
-        <div class="effects-controls">
-            <div class="bpm">
-                <p>bpm:</p>
-                <div class="bpm-visual">
-                    128
-                </div>
-                <div class="genre">
-                    Dance/edm
-                </div>
-                <input type="range" min="70" max="160" value="128" class="bpm-wetness">
-                <input type="range" min="0" max="100" value="0" class="bpm-swing">
-
+        <div class="drum-machine-board">
+            <div class="drum-machine-left-column">
+                
             </div>
-            <div class="auto-filter">
-                <p>autoFilter:</p>
-                <input type="range" min="0" max="100" value="0" class="auto-filter-wetness">
+            <div class="drum-machine-buttons">
+                
             </div>
-            <div class="bitcrush">
-                <p>Bitcrusher:</p>
-                <input type="range" min="0" max="50" value="0" class="bitcrush-wetness">
-            </div>
-            <div class="delay">
-                <p>Delay:</p>
-                <input type="range" min="0" max="50" value="0" class="delay-wetness">
-            </div>
-        </div>
-        <div class="drum-machine-left-column">
-            
-        </div>
-        <div class="drum-machine-buttons">
-            
         </div>
     </div>
 </body>
