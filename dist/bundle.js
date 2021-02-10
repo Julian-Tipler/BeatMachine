@@ -25615,7 +25615,11 @@ window.addEventListener('DOMContentLoaded', function () {
       document.querySelector('.play-pause-button>i').className = 'fas fa-play-circle';
     };
 
-    var cleartrack = function cleartrack() {};
+    var cleartrack = function cleartrack() {
+      document.querySelectorAll('input[type=checkbox]:checked').forEach(function (el) {
+        el.checked = false;
+      });
+    };
 
     var playButton = document.querySelector('.play-pause-button');
     playButton.addEventListener('click', function () {
@@ -25625,7 +25629,7 @@ window.addEventListener('DOMContentLoaded', function () {
     stopButton.addEventListener('click', function () {
       return stopTrack();
     });
-    var clearButton = document.querySelectorAll('.clear-button');
+    var clearButton = document.querySelector('.clear-button');
     clearButton.addEventListener('click', function () {
       return cleartrack();
     });

@@ -1,6 +1,9 @@
 /* div {
     background-color: black;
 } */
+body{
+    background-color: cornflowerblue;
+}
 
 .drum-machine-most {
     display: flex;

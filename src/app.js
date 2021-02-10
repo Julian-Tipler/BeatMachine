@@ -202,7 +202,9 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         const cleartrack = () => {
-
+            document.querySelectorAll('input[type=checkbox]:checked').forEach(el=> {
+                el.checked=false
+          });
         }
 
         const playButton = document.querySelector('.play-pause-button')
@@ -211,7 +213,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const stopButton = document.querySelector('.stop-button')
         stopButton.addEventListener('click', ()=> stopTrack());
 
-        const clearButton = document.querySelectorAll('.clear-button')
+        const clearButton = document.querySelector('.clear-button')
         clearButton.addEventListener('click', ()=> cleartrack())
 
         document.body.onkeyup = function(e){
