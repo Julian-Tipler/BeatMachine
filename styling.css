@@ -4,9 +4,6 @@
 
 
 
-
-
-
 .drum-machine-board {
     display: flex;
 
@@ -18,3 +15,30 @@
     width: 6%
 }
 
+.drum-machine-button {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.button-label {
+  margin: 10px;
+  padding: 5px;
+  border: 1px solid gray;
+  width: 10px;
+  height: 20px;
+  border-radius: 5px;
+}
+
+input:checked + label {
+  background-color: rgb(228, 121, 121);
+}
+
+div[class^="full-row"] {
+    display:flex;    
+}

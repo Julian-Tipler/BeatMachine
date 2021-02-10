@@ -25431,8 +25431,13 @@ window.addEventListener('DOMContentLoaded', function () {
       for (var j = 0; j < 16; j++) {
         var button = document.createElement('input');
         button.classList.add("row-".concat(i), "col-".concat(j), "drum-machine-button");
+        button.setAttribute("id", "r-".concat(i, "-c-").concat(j));
         button.type = 'checkbox';
         row.appendChild(button);
+        var label = document.createElement('label');
+        label.classList.add("row-".concat(i), "col-".concat(j), 'button-label');
+        label.setAttribute('for', "r-".concat(i, "-c-").concat(j));
+        row.appendChild(label);
       }
 
       drumMachineButtons.appendChild(row);
@@ -25484,12 +25489,10 @@ window.addEventListener('DOMContentLoaded', function () {
       var genre = document.querySelector('.genre');
 
       if (bpm <= 100) {
-        console.log('ping slow');
-        genre.innerHTML = "Hip Hop/Slow Rock";
+        genre.innerHTML = "Hip Hop/Slower Rock";
       }
 
       if (100 < bpm && bpm <= 135) {
-        console.log('ping medium');
         genre.innerHTML = "Electronic Dance Music/Pop Music/Rock";
       }
 
@@ -25546,25 +25549,25 @@ window.addEventListener('DOMContentLoaded', function () {
 
     function repeat(time) {
       var step = index % 16;
-      var kickInputs = document.querySelector(".full-row-0 input:nth-child(".concat(step + 1, ")"));
+      var kickInputs = document.getElementById("r-0-c-".concat(step));
 
       if (kickInputs.checked) {
         kick.start(time);
       }
 
-      var snareInputs = document.querySelector(".full-row-1 input:nth-child(".concat(step + 1, ")"));
+      var snareInputs = document.getElementById("r-1-c-".concat(step));
 
       if (snareInputs.checked) {
         snare.start(time);
       }
 
-      var hatInputs = document.querySelector(".full-row-2 input:nth-child(".concat(step + 1, ")"));
+      var hatInputs = document.getElementById("r-2-c-".concat(step));
 
       if (hatInputs.checked) {
         hat.start(time);
       }
 
-      var openHatInputs = document.querySelector(".full-row-3 input:nth-child(".concat(step + 1, ")"));
+      var openHatInputs = document.getElementById("r-3-c-".concat(step));
 
       if (openHatInputs.checked) {
         openHat.start(time);
