@@ -25411,11 +25411,9 @@ window.addEventListener('DOMContentLoaded', function () {
     var names = ['kick', 'snare', 'hat', 'hat 2', 'percussion 1', 'percussion 2', 'percussion 3', 'percussion 4'];
 
     for (var i = 0; i < names.length; i++) {
-      var sampleName = document.createElement('select');
+      var sampleName = document.createElement('div');
       sampleName.className = "samples-column-sampleName";
-      var option1 = document.createElement('option');
-      option1.innerHTML = names[i];
-      sampleName.appendChild(option1);
+      sampleName.innerHTML = names[i];
       drumMachineLeftColumn.appendChild(sampleName);
     }
   })();
@@ -25507,7 +25505,7 @@ window.addEventListener('DOMContentLoaded', function () {
       }
 
       if (100 < bpm && bpm <= 135) {
-        genre.innerHTML = "Electronic Dance Music/Pop Music/Rock";
+        genre.innerHTML = "Electronic/Pop/Rock";
       }
 
       if (135 < bpm) {
@@ -25559,6 +25557,10 @@ window.addEventListener('DOMContentLoaded', function () {
     var snare = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../assets/good-disco-snare_2.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
     var hat = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../assets/lofi-hat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
     var openHat = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../assets/open-disco-hat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
+    var ride = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../assets/ride.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
+    var conga = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../assets/conga.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
+    var crash = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../assets/crash.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
+    var clap = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../assets/clap.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
 
     function repeat(time) {
       var step = index % 16;
@@ -25591,6 +25593,30 @@ window.addEventListener('DOMContentLoaded', function () {
 
       if (openHatInputs.checked) {
         openHat.start(time);
+      }
+
+      var rideInputs = document.getElementById("r-4-c-".concat(step));
+
+      if (rideInputs.checked) {
+        ride.start(time);
+      }
+
+      var congaInputs = document.getElementById("r-5-c-".concat(step));
+
+      if (congaInputs.checked) {
+        conga.start(time);
+      }
+
+      var crashInputs = document.getElementById("r-6-c-".concat(step));
+
+      if (crashInputs.checked) {
+        crash.start(time);
+      }
+
+      var clapInputs = document.getElementById("r-7-c-".concat(step));
+
+      if (clapInputs.checked) {
+        clap.start(time);
       }
 
       index++;
