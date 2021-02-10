@@ -109,13 +109,13 @@ window.addEventListener('DOMContentLoaded', () => {
         //autoFilter
         autoFilter.set({wet:1})
         autoFilter.set({baseFrequency: 20000})
-
         document.querySelector('.auto-filter-frequency').addEventListener('input', (e)=> {
             e.preventDefault
             autoFilter.set({
                 baseFrequency:(Math.pow(e.currentTarget.value,1.9)+40)
             })
         })
+
         //delay
         delay.set({wet:0})
         document.querySelector('.delay-wetness').addEventListener('input', (e) => {
@@ -125,6 +125,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 wet: wet
             })
         })
+        
         //bitcrusher
         bitCrusher.set({wet:0})
         document.querySelector('.bitcrush-wetness').addEventListener('input', (e) => {
@@ -134,6 +135,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 wet: wet
             })
         }) 
+
         //samples
         const kick = new Tone.Player('../assets/Thumpy.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
         const snare = new Tone.Player('../assets/good-disco-snare_2.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);

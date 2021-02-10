@@ -38,6 +38,17 @@ body{
     margin-right: 10px;
 }
 
+.effects-controls {
+    border: 5px solid white;
+}
+
+.bpm {
+    display: flex;
+}
+.non-bpm {
+    display: flex;
+}
+
 .top-row {
     display: flex;
 }
