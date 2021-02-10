@@ -29,8 +29,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 button.type = 'checkbox'
                 row.appendChild(button)
 
-                let label = document.createElement('div');
-                label.innerHTML = "b"
+                let label = document.createElement('label');
                 label.classList.add(`row-${i}`, `col-${j}`,'button-label')
                 label.setAttribute('for',`r-${i}-c-${j}`)
                 row.appendChild(label)

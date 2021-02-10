@@ -25434,8 +25434,7 @@ window.addEventListener('DOMContentLoaded', function () {
         button.setAttribute("id", "r-".concat(i, "-c-").concat(j));
         button.type = 'checkbox';
         row.appendChild(button);
-        var label = document.createElement('div');
-        label.innerHTML = "b";
+        var label = document.createElement('label');
         label.classList.add("row-".concat(i), "col-".concat(j), 'button-label');
         label.setAttribute('for', "r-".concat(i, "-c-").concat(j));
         row.appendChild(label);
