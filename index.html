@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
     <link rel="stylesheet" href="styling.css">
     <script src="./dist/bundle.js"></script>
+    <script src="input-knobs.js"></script>
 </head>
 <body>
     <h1>Drum Machine</h1>
@@ -17,31 +18,34 @@
     <div class=drum-machine-body>
         <div class="effects-controls">
             <div class="bpm">
-                <div>BPM (beats per minute):</div>
-                <div class="bpm-visual">
-                    80
-                </div>
-                <div class='bpm-slider-and-genre'>
-                    <input type="range" min="70" max="160" value="80" class="bpm-wetness">
+                <div class='bpm-slider-and-genre knob-unit'>
+                    <div>
+                        <div>BPM (beats per minute):<div class="bpm-visual">80</div></div>
+                        
+                    </div>
+                    <input type="range" min="70" max="160" value="80" class="bpm-wetness input-knob">
                     <div class="genre">
                         Hip Hop/Slow Rock
                     </div>
                 </div>
-                <div>Swing:</div>
-                <input type="range" min="0" max="50" value="0" class="bpm-swing">
-                
+                <div class='knob-unit'>
+                    <div>Swing:</div>
+                    <input type="range" min="0" max="50" value="0" class="bpm-swing input-knob">
+                </div>
             </div>
-            <div class="auto-filter">
-                <div>autoFilter:</div>
-                <input type="range" min="1" max="100" value="100" class="auto-filter-frequency">
-            </div>
-            <div class="bitcrush">
-                <div>Bitcrusher:</div>
-                <input type="range" min="0" max="50" value="0" class="bitcrush-wetness">
-            </div>
-            <div class="delay">
-                <div>Delay:</div>
-                <input type="range" min="0" max="50" value="0" class="delay-wetness">
+            <div class="non-bpm">
+                <div class="auto-filter knob-unit">
+                    <div>AutoFilter:</div>
+                    <input type="range" min="1" max="100" value="100" class="auto-filter-frequency input-knob">
+                </div>
+                <div class="bitcrush knob-unit">
+                    <div>Bitcrusher:</div>
+                    <input type="range" min="0" max="50" value="0" class="bitcrush-wetness input-knob">
+                </div>
+                <div class="delay knob-unit">
+                    <div>Delay:</div>
+                    <input type="range" min="0" max="50" value="0" class="delay-wetness input-knob">
+                </div>
             </div>
         </div>
         <div class="play-pause-stop-buttons">

@@ -5,13 +5,9 @@ window.addEventListener('DOMContentLoaded', () => {
         let drumMachineLeftColumn = document.body.querySelector('.drum-machine-left-column');
         let names = ['kick','snare','hat','hat 2','percussion 1', 'percussion 2', 'percussion 3', 'percussion 4']
             for (let i = 0; i <names.length; i++) {
-                let sampleName = document.createElement('select');
+                let sampleName = document.createElement('div');
                 sampleName.className = `samples-column-sampleName`;
-
-                let option1 = document.createElement('option');
-                option1.innerHTML = names[i];
-
-                sampleName.appendChild(option1);
+                sampleName.innerHTML = names[i];
                 drumMachineLeftColumn.appendChild(sampleName)
             }
     })()
@@ -98,7 +94,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 genre.innerHTML = "Hip Hop/Slower Rock"
             }
             if (100 < bpm  && bpm <= 135) {
-                genre.innerHTML = "Electronic Dance Music/Pop Music/Rock"
+                genre.innerHTML = "Electronic/Pop/Rock"
             }
             if (135 < bpm) {
                 genre.innerHTML = "Techno/Drum and Bass"
@@ -113,13 +109,13 @@ window.addEventListener('DOMContentLoaded', () => {
         //autoFilter
         autoFilter.set({wet:1})
         autoFilter.set({baseFrequency: 20000})
-
         document.querySelector('.auto-filter-frequency').addEventListener('input', (e)=> {
             e.preventDefault
             autoFilter.set({
                 baseFrequency:(Math.pow(e.currentTarget.value,1.9)+40)
             })
         })
+
         //delay
         delay.set({wet:0})
         document.querySelector('.delay-wetness').addEventListener('input', (e) => {
@@ -129,6 +125,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 wet: wet
             })
         })
+        
         //bitcrusher
         bitCrusher.set({wet:0})
         document.querySelector('.bitcrush-wetness').addEventListener('input', (e) => {
@@ -138,11 +135,16 @@ window.addEventListener('DOMContentLoaded', () => {
                 wet: wet
             })
         }) 
+
         //samples
         const kick = new Tone.Player('../assets/Thumpy.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
         const snare = new Tone.Player('../assets/good-disco-snare_2.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
         const hat = new Tone.Player('../assets/lofi-hat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
         const openHat = new Tone.Player('../assets/open-disco-hat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const ride = new Tone.Player('../assets/ride.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const conga = new Tone.Player('../assets/conga.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const crash = new Tone.Player('../assets/crash.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const clap = new Tone.Player('../assets/clap.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
 
 
         function repeat(time) {
@@ -174,6 +176,26 @@ window.addEventListener('DOMContentLoaded', () => {
             let openHatInputs = document.getElementById(`r-3-c-${step}`)
             if (openHatInputs.checked){
                 openHat.start(time)
+            }
+
+            let rideInputs = document.getElementById(`r-4-c-${step}`)
+            if(rideInputs.checked){
+                ride.start(time)
+            }
+            
+            let congaInputs = document.getElementById(`r-5-c-${step}`)
+            if(congaInputs.checked){
+                conga.start(time)
+            }
+
+            let crashInputs = document.getElementById(`r-6-c-${step}`)
+            if (crashInputs.checked){
+                crash.start(time)
+            }
+
+            let clapInputs = document.getElementById(`r-7-c-${step}`)
+            if (clapInputs.checked){
+                clap.start(time)
             }
 
             index++
