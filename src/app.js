@@ -1,6 +1,5 @@
 import * as Tone from 'Tone'
 window.addEventListener('DOMContentLoaded', () => {
-
     //samples column
     (() => {
         let drumMachineLeftColumn = document.body.querySelector('.drum-machine-left-column');
@@ -26,8 +25,16 @@ window.addEventListener('DOMContentLoaded', () => {
             for (let j = 0; j < 16; j++) {
                 let button = document.createElement('input');
                 button.classList.add(`row-${i}`, `col-${j}`,`drum-machine-button`)
+                button.setAttribute("id",`r-${i}-c-${j}`)
                 button.type = 'checkbox'
                 row.appendChild(button)
+
+                let label = document.createElement('div');
+                label.innerHTML = "b"
+                label.classList.add(`row-${i}`, `col-${j}`,'button-label')
+                label.setAttribute('for',`r-${i}-c-${j}`)
+                row.appendChild(label)
+
             }
             drumMachineButtons.appendChild(row)
         }
@@ -79,11 +86,9 @@ window.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.bpm-visual').innerHTML = bpm
             let genre = document.querySelector('.genre')
             if (bpm <= 100) {
-                console.log('ping slow')
-                genre.innerHTML = "Hip Hop/Slow Rock"
+                genre.innerHTML = "Hip Hop/Slower Rock"
             }
             if (100 < bpm  && bpm <= 135) {
-                console.log('ping medium')
                 genre.innerHTML = "Electronic Dance Music/Pop Music/Rock"
             }
             if (135 < bpm) {
@@ -135,22 +140,23 @@ window.addEventListener('DOMContentLoaded', () => {
         function repeat(time) {
             let step = index % 16;
 
-            let kickInputs = document.querySelector(`.full-row-0 input:nth-child(${step + 1})`)
+            let kickInputs = document.getElementById(`r-0-c-${step}`)
+ 
             if(kickInputs.checked){
                 kick.start(time)
             }
             
-            let snareInputs = document.querySelector(`.full-row-1 input:nth-child(${step + 1})`)
+            let snareInputs = document.getElementById(`r-1-c-${step}`)
             if(snareInputs.checked){
                 snare.start(time)
             }
 
-            let hatInputs = document.querySelector(`.full-row-2 input:nth-child(${step + 1})`)
+            let hatInputs = document.getElementById(`r-2-c-${step}`)
             if (hatInputs.checked){
                 hat.start(time)
             }
 
-            let openHatInputs = document.querySelector(`.full-row-3 input:nth-child(${step + 1})`)
+            let openHatInputs = document.getElementById(`r-3-c-${step}`)
             if (openHatInputs.checked){
                 openHat.start(time)
             }
