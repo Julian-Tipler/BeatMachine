@@ -25418,25 +25418,39 @@ window.addEventListener('DOMContentLoaded', function () {
       sampleName.appendChild(option1);
       drumMachineLeftColumn.appendChild(sampleName);
     }
-  })(); //generateOneRow
+  })();
 
+  var topRow = document.createElement('div');
+  topRow.className = 'top-row';
+
+  for (var i = 0; i < 16; i++) {
+    var button = document.createElement('div');
+    button.classList.add('top-row-button');
+    button.setAttribute("id", "r-".concat(i));
+    topRow.appendChild(button);
+  }
+
+  document.body.querySelector('.drum-machine-top-row').appendChild(topRow); //generateRows
 
   var generateRows = function generateRows(rowNum) {
     var drumMachineButtons = document.body.querySelector('.drum-machine-buttons');
 
-    for (var i = 0; i < rowNum; i++) {
+    for (var _i = 0; _i < rowNum; _i++) {
       var row = document.createElement('div');
-      row.className = "full-row-".concat(i);
+      row.className = "full-row-".concat(_i);
 
       for (var j = 0; j < 16; j++) {
-        var button = document.createElement('input');
-        button.classList.add("row-".concat(i), "col-".concat(j), "drum-machine-button");
-        button.setAttribute("id", "r-".concat(i, "-c-").concat(j));
-        button.type = 'checkbox';
-        row.appendChild(button);
+        var _button = document.createElement('input');
+
+        _button.classList.add("row-".concat(_i), "col-".concat(j), "drum-machine-button");
+
+        _button.setAttribute("id", "r-".concat(_i, "-c-").concat(j));
+
+        _button.type = 'checkbox';
+        row.appendChild(_button);
         var label = document.createElement('label');
-        label.classList.add("row-".concat(i), "col-".concat(j), 'button-label');
-        label.setAttribute('for', "r-".concat(i, "-c-").concat(j));
+        label.classList.add("row-".concat(_i), "col-".concat(j), 'button-label');
+        label.setAttribute('for', "r-".concat(_i, "-c-").concat(j));
         row.appendChild(label);
       }
 
@@ -25504,7 +25518,6 @@ window.addEventListener('DOMContentLoaded', function () {
       e.preventDefault;
       var swing = e.currentTarget.value / 100;
       Tone__WEBPACK_IMPORTED_MODULE_0__.Transport.swing = swing;
-      console.log(Tone__WEBPACK_IMPORTED_MODULE_0__.Transport.swing);
     }); //autoFilter
 
     autoFilter.set({
@@ -25549,6 +25562,13 @@ window.addEventListener('DOMContentLoaded', function () {
 
     function repeat(time) {
       var step = index % 16;
+      var alreadyLit = document.querySelectorAll('.lit-up');
+      alreadyLit.forEach(function (el) {
+        if (el.classList) {
+          el.classList.remove('lit-up');
+        }
+      });
+      document.getElementById("r-".concat(step)).classList.add('lit-up');
       var kickInputs = document.getElementById("r-0-c-".concat(step));
 
       if (kickInputs.checked) {
@@ -25595,6 +25615,8 @@ window.addEventListener('DOMContentLoaded', function () {
       document.querySelector('.play-pause-button>i').className = 'fas fa-play-circle';
     };
 
+    var cleartrack = function cleartrack() {};
+
     var playButton = document.querySelector('.play-pause-button');
     playButton.addEventListener('click', function () {
       return playPauseTrack();
@@ -25602,6 +25624,10 @@ window.addEventListener('DOMContentLoaded', function () {
     var stopButton = document.querySelector('.stop-button');
     stopButton.addEventListener('click', function () {
       return stopTrack();
+    });
+    var clearButton = document.querySelectorAll('.clear-button');
+    clearButton.addEventListener('click', function () {
+      return cleartrack();
     });
 
     document.body.onkeyup = function (e) {

@@ -2,17 +2,35 @@
     background-color: black;
 } */
 
-
+.drum-machine-most {
+    display: flex;
+}
 
 .drum-machine-board {
-    display: flex;
-
+    background-color: black;
+    width: auto;
 }
 
 .drum-machine-left-column {
-    display: flex;
     flex-direction: column;
     width: 6%
+}
+
+.top-row {
+    display: flex;
+}
+
+
+.top-row-button {
+    margin: 10px;
+    padding: 2px 5px;
+    border: 1px solid gray;
+    width: 10px;
+    border-radius: 2px;
+}
+
+.lit-up {
+    background-color: rgb(85, 85, 252);
 }
 
 .drum-machine-button {

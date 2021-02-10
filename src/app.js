@@ -16,7 +16,17 @@ window.addEventListener('DOMContentLoaded', () => {
             }
     })()
 
-    //generateOneRow
+    let topRow = document.createElement('div');
+    topRow.className='top-row'
+    for (let i = 0; i < 16; i++) {
+        let button = document.createElement('div')
+        button.classList.add('top-row-button')
+        button.setAttribute("id", `r-${i}`)
+        topRow.appendChild(button)
+    }
+    document.body.querySelector('.drum-machine-top-row').appendChild(topRow)
+
+    //generateRows
     const generateRows = (rowNum) => {
         let drumMachineButtons = document.body.querySelector('.drum-machine-buttons')
         for (let i = 0; i < rowNum; i++) {
@@ -98,7 +108,6 @@ window.addEventListener('DOMContentLoaded', () => {
             e.preventDefault
             let swing = e.currentTarget.value/100
             Tone.Transport.swing = swing
-            console.log(Tone.Transport.swing)
         })
 
         //autoFilter
@@ -139,8 +148,15 @@ window.addEventListener('DOMContentLoaded', () => {
         function repeat(time) {
             let step = index % 16;
 
+            let alreadyLit = document.querySelectorAll('.lit-up')
+            alreadyLit.forEach(el=> {
+                if (el.classList) {
+                    el.classList.remove('lit-up')
+                }
+            })
+            document.getElementById(`r-${step}`).classList.add('lit-up')
+                
             let kickInputs = document.getElementById(`r-0-c-${step}`)
- 
             if(kickInputs.checked){
                 kick.start(time)
             }
@@ -163,7 +179,7 @@ window.addEventListener('DOMContentLoaded', () => {
             index++
         }
 
-        const playPauseTrack = ()=> {
+        const playPauseTrack = () => {
             if (playing === false) {
                 Tone.Transport.start()
                 playing = true
@@ -177,11 +193,15 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        const stopTrack = ()=> {
+        const stopTrack = () => {
             Tone.Transport.stop()
             playing = false
             index = 0
             document.querySelector('.play-pause-button>i').className = 'fas fa-play-circle'
+
+        }
+
+        const cleartrack = () => {
 
         }
 
@@ -190,6 +210,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
         const stopButton = document.querySelector('.stop-button')
         stopButton.addEventListener('click', ()=> stopTrack());
+
+        const clearButton = document.querySelectorAll('.clear-button')
+        clearButton.addEventListener('click', ()=> cleartrack())
 
         document.body.onkeyup = function(e){
         if(e.keyCode == 32){
