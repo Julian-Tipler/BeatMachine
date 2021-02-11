@@ -137,14 +137,14 @@ window.addEventListener('DOMContentLoaded', () => {
         }) 
 
         //samples
-        const kick = new Tone.Player('../assets/Thumpy.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
-        const snare = new Tone.Player('../assets/good-disco-snare_2.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
-        const hat = new Tone.Player('../assets/lofi-hat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
-        const openHat = new Tone.Player('../assets/open-disco-hat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
-        const ride = new Tone.Player('../assets/ride.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
-        const conga = new Tone.Player('../assets/conga.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
-        const crash = new Tone.Player('../assets/crash.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
-        const clap = new Tone.Player('../assets/clap.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const kick = new Tone.Player('../public/audio/Thumpy.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const snare = new Tone.Player('../public/audio/good-disco-snare_2.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const hat = new Tone.Player('../public/audio/lofi-hat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const openHat = new Tone.Player('../public/audio/open-disco-hat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const ride = new Tone.Player('../public/audio/ride.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const conga = new Tone.Player('../public/audio/conga.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const crash = new Tone.Player('../public/audio/crash.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const clap = new Tone.Player('../public/audio/clap.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
 
 
         function repeat(time) {

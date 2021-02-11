@@ -25553,14 +25553,14 @@ window.addEventListener('DOMContentLoaded', function () {
       });
     }); //samples
 
-    var kick = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../assets/Thumpy.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
-    var snare = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../assets/good-disco-snare_2.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
-    var hat = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../assets/lofi-hat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
-    var openHat = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../assets/open-disco-hat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
-    var ride = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../assets/ride.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
-    var conga = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../assets/conga.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
-    var crash = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../assets/crash.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
-    var clap = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../assets/clap.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
+    var kick = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../public/audio/Thumpy.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
+    var snare = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../public/audio/good-disco-snare_2.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
+    var hat = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../public/audio/lofi-hat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
+    var openHat = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../public/audio/open-disco-hat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
+    var ride = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../public/audio/ride.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
+    var conga = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../public/audio/conga.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
+    var crash = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../public/audio/crash.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
+    var clap = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('../public/audio/clap.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
 
     function repeat(time) {
       var step = index % 16;
