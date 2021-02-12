@@ -137,14 +137,14 @@ window.addEventListener('DOMContentLoaded', () => {
         }) 
 
         //samples
-        const kick = new Tone.Player('../dist/public/audio/Thumpy.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
-        const snare = new Tone.Player('../dist/public/audio/good-disco-snare_2.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
-        const hat = new Tone.Player('../dist/public/audio/lofi-hat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
-        const openHat = new Tone.Player('../dist/public/audio/open-disco-hat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
-        const ride = new Tone.Player('../dist/public/audio/ride.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
-        const conga = new Tone.Player('../dist/public/audio/conga.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
-        const crash = new Tone.Player('../dist/public/audio/crash.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
-        const clap = new Tone.Player('../dist/public/audio/clap.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const kick = new Tone.Player('/dist/public/audio/Thumpy.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const snare = new Tone.Player('/dist/public/audio/good-disco-snare_2.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const hat = new Tone.Player('/dist/public/audio/lofi-hat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const openHat = new Tone.Player('/dist/public/audio/open-disco-hat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const ride = new Tone.Player('/dist/public/audio/ride.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const conga = new Tone.Player('/dist/public/audio/conga.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const crash = new Tone.Player('/dist/public/audio/crash.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const clap = new Tone.Player('/dist/public/audio/clap.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
 
         function repeat(time) {
             let step = index % 16;
