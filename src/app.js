@@ -1,11 +1,10 @@
 import * as Tone from 'Tone'
 window.addEventListener('DOMContentLoaded', () => {
 
-    console.log('ping')
     //samples column
     (() => {
         let drumMachineLeftColumn = document.body.querySelector('.drum-machine-left-column');
-        let names = ['kick','snare','hat','hat 2','percussion 1', 'percussion 2', 'percussion 3', 'percussion 4']
+        let names = ['kick111','snare','hat','hat 2','percussion 1', 'percussion 2', 'percussion 3', 'percussion 4']
             for (let i = 0; i <names.length; i++) {
                 let sampleName = document.createElement('div');
                 sampleName.className = `samples-column-sampleName`;
