@@ -25405,7 +25405,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var Tone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! Tone */ "./node_modules/Tone/build/esm/index.js");
 
 window.addEventListener('DOMContentLoaded', function () {
-  //samples column
+  console.log('ping') //samples column
   (function () {
     var drumMachineLeftColumn = document.body.querySelector('.drum-machine-left-column');
     var names = ['kick', 'snare', 'hat', 'hat 2', 'percussion 1', 'percussion 2', 'percussion 3', 'percussion 4'];
@@ -25417,7 +25417,6 @@ window.addEventListener('DOMContentLoaded', function () {
       drumMachineLeftColumn.appendChild(sampleName);
     }
   })();
-
   var topRow = document.createElement('div');
   topRow.className = 'top-row';
 

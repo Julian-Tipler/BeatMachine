@@ -1,5 +1,7 @@
 import * as Tone from 'Tone'
 window.addEventListener('DOMContentLoaded', () => {
+
+    console.log('ping')
     //samples column
     (() => {
         let drumMachineLeftColumn = document.body.querySelector('.drum-machine-left-column');
