@@ -25408,13 +25408,12 @@ window.addEventListener('DOMContentLoaded', function () {
   //samples column
   (function () {
     var drumMachineLeftColumn = document.body.querySelector('.drum-machine-left-column');
-    var names = ['kick111', 'snare', 'hat', 'hat 2', 'percussion 1', 'percussion 2', 'percussion 3', 'percussion 4'];
+    var names = ['fas fa-drum-steelpan', 'fas fa-drum', 'fas fa-compact-disc', 'fas fa-compact-disc', 'fas fa-record-vinyl', 'fas fa-record-vinyl', 'fas fa-record-vinyl', 'fas fa-record-vinyl'];
 
     for (var i = 0; i < names.length; i++) {
-      var sampleName = document.createElement('div');
-      sampleName.className = "samples-column-sampleName";
-      sampleName.innerHTML = names[i];
-      drumMachineLeftColumn.appendChild(sampleName);
+      var sampleIcon = document.createElement('i');
+      sampleIcon.className = names[i];
+      drumMachineLeftColumn.appendChild(sampleIcon);
     }
   })();
 
@@ -25456,20 +25455,8 @@ window.addEventListener('DOMContentLoaded', function () {
     } //prefilled
 
 
-    var zeroAndEight = document.querySelectorAll('.row-0.col-0,.row-0.col-8');
-    zeroAndEight.forEach(function (el) {
-      el.checked = true;
-    });
-    var fourAndTwelve = document.querySelectorAll('.row-1.col-4,.row-1.col-12');
-    fourAndTwelve.forEach(function (el) {
-      el.checked = true;
-    });
-    var inbetweenNotes = document.querySelectorAll('.row-2.col-1,.row-2.col-2,.row-2.col-3,.row-2.col-5,.row-2.col-6,.row-2.col-7,.row-2.col-9,.row-2.col-10,.row-2.col-11,.row-2.col-13,.row-2.col-14,.row-2.col-15');
-    inbetweenNotes.forEach(function (el) {
-      el.checked = true;
-    });
-    var offbeatNotes = document.querySelectorAll('.row-5.col-3, .row-5.col-11');
-    offbeatNotes.forEach(function (el) {
+    var prefilled = document.querySelectorAll('.row-0.col-0,.row-0.col-8,.row-1.col-4,.row-1.col-12,.row-2.col-1,.row-2.col-2,.row-2.col-3,.row-2.col-5,.row-2.col-6,.row-2.col-7,.row-2.col-9,.row-2.col-10,.row-2.col-11,.row-2.col-13,.row-2.col-14,.row-2.col-15,.row-5.col-3,.row-5.col-11');
+    prefilled.forEach(function (el) {
       el.checked = true;
     });
   };
@@ -25505,7 +25492,7 @@ window.addEventListener('DOMContentLoaded', function () {
       var genre = document.querySelector('.genre');
 
       if (bpm <= 100) {
-        genre.innerHTML = "Hip Hop/Slower Rock";
+        genre.innerHTML = "Hip Hop/Slow Rock";
       }
 
       if (100 < bpm && bpm <= 135) {
@@ -25513,7 +25500,7 @@ window.addEventListener('DOMContentLoaded', function () {
       }
 
       if (135 < bpm) {
-        genre.innerHTML = "Techno/Drum and Bass";
+        genre.innerHTML = "Techno/Drum&Bass";
       }
     });
     document.querySelector('.bpm-swing').addEventListener('input', function (e) {

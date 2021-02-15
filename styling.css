@@ -4,7 +4,7 @@
 
 :root {
     --controls-width: 600px;
-    --main-color: rgb(0, 255, 225);
+    --main-color: rgb(89, 94, 94);
 }
 
 body{
@@ -26,6 +26,7 @@ h1 {
 .effects-controls {
     display: flex;
     align-items: center;
+    justify-content: space-around;
     border: 5px solid var(--main-color);
     border-bottom: 0;
     border-radius: 5px;
@@ -34,11 +35,17 @@ h1 {
     background-color: honeydew;
 }
 
+.swing {
+    margin-top: 15px;
+}
+
 .play-pause-stop-buttons {
     border: 5px solid var(--main-color);
     width: var(--controls-width);
     padding: 5px;
     background-color: honeydew;
+    display: flex;
+    justify-content: center;
 }
 
 .time-button {
@@ -46,6 +53,12 @@ h1 {
     width: 50px;
     height: 30px;
     font-size: 15px;
+}
+
+.genre {
+    position: relative;
+    left: -30px;
+    width: 150px;
 }
 
 .play-pause-button {
@@ -63,22 +76,23 @@ h1 {
 .drum-machine-most {
     display: flex;
     margin-top: 30px;
-    margin-right: 100px;
+    margin-right: 40px;
 }
 
 .drum-machine-board {
     background-color: rgb(47, 47, 47);
     width: auto;
     border-radius: 10px;
+    padding: 10px;
 }
 
 .drum-machine-left-column {
     display: flex;
     flex-direction: column;
     width: 20%;
-    height: 416px;
+    height: 458px;
     justify-content: space-around;
-    padding-top: 20px;
+    padding-top: 40px;
     margin-right: 10px;
 }
 
@@ -97,7 +111,7 @@ h1 {
     margin: 10px;
     padding: 2px 5px;
     border: 1px solid gray;
-    width: 10px;
+    width: 15px;
     border-radius: 2px;
 }
 
@@ -120,14 +134,18 @@ h1 {
   margin: 10px;
   padding: 5px;
   border: 1px solid black;
-  width: 10px;
-  height: 20px;
+  width: 15px;
+  height: 25px;
   border-radius: 5px;
-  background-color: grey;
+  background-color: rgb(83, 83, 83);
+  box-shadow: 0px 2px 2px red;
 }
 
 input:checked + label {
   background-color: rgb(228, 121, 121);
+  margin-top: 12px;
+  margin-bottom: 8px;
+  box-shadow: none;
 }
 
 div[class^="full-row"] {
