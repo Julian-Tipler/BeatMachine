@@ -58,6 +58,10 @@ window.addEventListener('DOMContentLoaded', () => {
             inbetweenNotes.forEach(el=> {
             el.checked=true
             })
+        let offbeatNotes = document.querySelectorAll('.row-5.col-3, .row-5.col-11')
+            offbeatNotes.forEach(el=> {
+            el.checked=true
+            })
         
     }
     generateRows(8);
@@ -222,7 +226,12 @@ window.addEventListener('DOMContentLoaded', () => {
             playing = false
             index = 0
             document.querySelector('.play-pause-button>i').className = 'fas fa-play-circle'
-
+            let alreadyLit = document.querySelectorAll('.lit-up')
+            alreadyLit.forEach(el=> {
+                if (el.classList) {
+                    el.classList.remove('lit-up')
+                }
+            })
         }
 
         const cleartrack = () => {

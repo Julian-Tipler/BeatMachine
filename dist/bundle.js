@@ -25468,6 +25468,10 @@ window.addEventListener('DOMContentLoaded', function () {
     inbetweenNotes.forEach(function (el) {
       el.checked = true;
     });
+    var offbeatNotes = document.querySelectorAll('.row-5.col-3, .row-5.col-11');
+    offbeatNotes.forEach(function (el) {
+      el.checked = true;
+    });
   };
 
   generateRows(8);
@@ -25639,6 +25643,12 @@ window.addEventListener('DOMContentLoaded', function () {
       playing = false;
       index = 0;
       document.querySelector('.play-pause-button>i').className = 'fas fa-play-circle';
+      var alreadyLit = document.querySelectorAll('.lit-up');
+      alreadyLit.forEach(function (el) {
+        if (el.classList) {
+          el.classList.remove('lit-up');
+        }
+      });
     };
 
     var cleartrack = function cleartrack() {
