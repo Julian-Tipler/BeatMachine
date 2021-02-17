@@ -1,9 +1,16 @@
 /* div {
     background-color: black;
 } */
+
+:root {
+    --controls-width: 600px;
+    --main-color: rgb(89, 94, 94);
+}
+
 body{
     background-color: cornflowerblue;
     font-family: Arial, Helvetica, sans-serif;
+    margin:0;
 }
 
 h1 {
@@ -17,35 +24,77 @@ h1 {
     align-items: center;
 }
 
-.drum-machine-most {
-    display: flex;
-    margin-top: 30px;
-}
-
-.drum-machine-board {
-    background-color: black;
-    width: auto;
-    border-radius: 10px;
-
-}
-
 .effects-controls {
     display: flex;
     align-items: center;
+    justify-content: space-around;
+    border: 5px solid var(--main-color);
+    border-bottom: 0;
+    border-radius: 5px;
+    width: var(--controls-width);
+    padding: 5px;
+    background-color: rgb(246, 255, 246);
+}
+
+.swing {
+    margin-top: 15px;
+}
+
+.play-pause-stop-buttons {
+    border: 5px solid var(--main-color);
+    width: var(--controls-width);
+    padding: 5px;
+    background-color: rgb(246, 255, 246);
+    display: flex;
+    justify-content: center;
+}
+
+.time-button {
+    border-radius: 5px;
+    width: 50px;
+    height: 30px;
+    font-size: 15px;
+}
+
+.genre {
+    position: relative;
+    left: -30px;
+    width: 150px;
+}
+
+.play-pause-button {
+    background-color: coral;
+}
+
+.stop-button {
+    background-color: red;
+}
+
+.clear-button {
+    background-color: yellow;
+}
+
+.drum-machine-most {
+    display: flex;
+    margin-top: 30px;
+    margin-right: 40px;
+}
+
+.drum-machine-board {
+    background-color: rgb(47, 47, 47);
+    width: auto;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .drum-machine-left-column {
     display: flex;
     flex-direction: column;
     width: 20%;
-    height: 416px;
+    height: 458px;
     justify-content: space-around;
-    padding-top: 20px;
+    padding-top: 40px;
     margin-right: 10px;
-}
-
-.effects-controls {
-    border: 5px solid white;
 }
 
 .bpm {
@@ -59,12 +108,11 @@ h1 {
     display: flex;
 }
 
-
 .top-row-button {
     margin: 10px;
     padding: 2px 5px;
     border: 1px solid gray;
-    width: 10px;
+    width: 15px;
     border-radius: 2px;
 }
 
@@ -86,16 +134,52 @@ h1 {
 .button-label {
   margin: 10px;
   padding: 5px;
-  border: 1px solid gray;
-  width: 10px;
-  height: 20px;
+  border: 1px solid black;
+  width: 15px;
+  height: 25px;
   border-radius: 5px;
+  background-color: rgb(83, 83, 83);
+  box-shadow: 0px 2px 2px red;
 }
 
 input:checked + label {
   background-color: rgb(228, 121, 121);
+  margin-top: 12px;
+  margin-bottom: 8px;
+  box-shadow: none;
 }
 
 div[class^="full-row"] {
     display:flex;    
+}
+
+
+.footer {
+    
+    position:absolute;
+    width: 100vw;
+    bottom: 0px;
+    height: 8vh;
+    background-color: rgb(246, 255, 246); 
+    border-top: 2px solid rgb(174, 37, 37);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-top: 1px solid rgb(246, 255, 246);
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: rgb(21,82,240);
+}
+
+.links:hover{
+    color: red;
+}
+
+.github-links>* {
+    margin-left: 5px;
+    margin-right: 5px;
 }

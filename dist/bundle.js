@@ -25408,13 +25408,12 @@ window.addEventListener('DOMContentLoaded', function () {
   //samples column
   (function () {
     var drumMachineLeftColumn = document.body.querySelector('.drum-machine-left-column');
-    var names = ['kick', 'snare', 'hat', 'hat 2', 'percussion 1', 'percussion 2', 'percussion 3', 'percussion 4'];
+    var names = ['fas fa-drum-steelpan', 'fas fa-drum', 'fas fa-compact-disc', 'fas fa-compact-disc', 'fas fa-record-vinyl', 'fas fa-record-vinyl', 'fas fa-record-vinyl', 'fas fa-record-vinyl'];
 
     for (var i = 0; i < names.length; i++) {
-      var sampleName = document.createElement('div');
-      sampleName.className = "samples-column-sampleName";
-      sampleName.innerHTML = names[i];
-      drumMachineLeftColumn.appendChild(sampleName);
+      var sampleIcon = document.createElement('i');
+      sampleIcon.className = names[i];
+      drumMachineLeftColumn.appendChild(sampleIcon);
     }
   })();
 
@@ -25456,16 +25455,8 @@ window.addEventListener('DOMContentLoaded', function () {
     } //prefilled
 
 
-    var zeroAndEight = document.querySelectorAll('.row-0.col-0,.row-0.col-8');
-    zeroAndEight.forEach(function (el) {
-      el.checked = true;
-    });
-    var fourAndTwelve = document.querySelectorAll('.row-1.col-4,.row-1.col-12');
-    fourAndTwelve.forEach(function (el) {
-      el.checked = true;
-    });
-    var inbetweenNotes = document.querySelectorAll('.row-2.col-1,.row-2.col-2,.row-2.col-3,.row-2.col-5,.row-2.col-6,.row-2.col-7,.row-2.col-9,.row-2.col-10,.row-2.col-11,.row-2.col-13,.row-2.col-14,.row-2.col-15');
-    inbetweenNotes.forEach(function (el) {
+    var prefilled = document.querySelectorAll('.row-0.col-0,.row-0.col-8,.row-1.col-4,.row-1.col-12,.row-2.col-1,.row-2.col-2,.row-2.col-3,.row-2.col-5,.row-2.col-6,.row-2.col-7,.row-2.col-9,.row-2.col-10,.row-2.col-11,.row-2.col-13,.row-2.col-14,.row-2.col-15,.row-5.col-3,.row-5.col-11');
+    prefilled.forEach(function (el) {
       el.checked = true;
     });
   };
@@ -25501,7 +25492,7 @@ window.addEventListener('DOMContentLoaded', function () {
       var genre = document.querySelector('.genre');
 
       if (bpm <= 100) {
-        genre.innerHTML = "Hip Hop/Slower Rock";
+        genre.innerHTML = "Hip Hop/Slow Rock";
       }
 
       if (100 < bpm && bpm <= 135) {
@@ -25509,7 +25500,7 @@ window.addEventListener('DOMContentLoaded', function () {
       }
 
       if (135 < bpm) {
-        genre.innerHTML = "Techno/Drum and Bass";
+        genre.innerHTML = "Techno/Drum&Bass";
       }
     });
     document.querySelector('.bpm-swing').addEventListener('input', function (e) {
@@ -25553,14 +25544,14 @@ window.addEventListener('DOMContentLoaded', function () {
       });
     }); //samples
 
-    var kick = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('/dist/public/audio/Thumpy.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
-    var snare = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('/dist/public/audio/good-disco-snare_2.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
-    var hat = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('/dist/public/audio/lofi-hat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
-    var openHat = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('/dist/public/audio/open-disco-hat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
-    var ride = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('/dist/public/audio/ride.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
-    var conga = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('/dist/public/audio/conga.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
-    var crash = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('/dist/public/audio/crash.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
-    var clap = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('/dist/public/audio/clap.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
+    var kick = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('./dist/public/audio/kick.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
+    var snare = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('./dist/public/audio/snare.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
+    var hat = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('./dist/public/audio/hatSample.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
+    var openHat = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('./dist/public/audio/openHat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
+    var ride = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('./dist/public/audio/rideCymbal.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
+    var conga = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('./dist/public/audio/congaSample.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
+    var crash = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('./dist/public/audio/crashSample.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
+    var clap = new Tone__WEBPACK_IMPORTED_MODULE_0__.Player('./dist/public/audio/clapSample.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone__WEBPACK_IMPORTED_MODULE_0__.Destination);
 
     function repeat(time) {
       var step = index % 16;
@@ -25639,6 +25630,12 @@ window.addEventListener('DOMContentLoaded', function () {
       playing = false;
       index = 0;
       document.querySelector('.play-pause-button>i').className = 'fas fa-play-circle';
+      var alreadyLit = document.querySelectorAll('.lit-up');
+      alreadyLit.forEach(function (el) {
+        if (el.classList) {
+          el.classList.remove('lit-up');
+        }
+      });
     };
 
     var cleartrack = function cleartrack() {

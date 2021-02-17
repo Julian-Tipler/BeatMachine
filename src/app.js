@@ -1,14 +1,14 @@
 import * as Tone from 'Tone'
 window.addEventListener('DOMContentLoaded', () => {
+
     //samples column
     (() => {
         let drumMachineLeftColumn = document.body.querySelector('.drum-machine-left-column');
-        let names = ['kick','snare','hat','hat 2','percussion 1', 'percussion 2', 'percussion 3', 'percussion 4']
+        let names = ['fas fa-drum-steelpan','fas fa-drum','fas fa-compact-disc','fas fa-compact-disc','fas fa-record-vinyl', 'fas fa-record-vinyl', 'fas fa-record-vinyl', 'fas fa-record-vinyl']
             for (let i = 0; i <names.length; i++) {
-                let sampleName = document.createElement('div');
-                sampleName.className = `samples-column-sampleName`;
-                sampleName.innerHTML = names[i];
-                drumMachineLeftColumn.appendChild(sampleName)
+                let sampleIcon = document.createElement('i');
+                sampleIcon.className = names[i];
+                drumMachineLeftColumn.appendChild(sampleIcon)
             }
     })()
 
@@ -45,18 +45,10 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         //prefilled
-        let zeroAndEight = document.querySelectorAll('.row-0.col-0,.row-0.col-8')
-        zeroAndEight.forEach(el=> {
+        let prefilled = document.querySelectorAll('.row-0.col-0,.row-0.col-8,.row-1.col-4,.row-1.col-12,.row-2.col-1,.row-2.col-2,.row-2.col-3,.row-2.col-5,.row-2.col-6,.row-2.col-7,.row-2.col-9,.row-2.col-10,.row-2.col-11,.row-2.col-13,.row-2.col-14,.row-2.col-15,.row-5.col-3,.row-5.col-11')
+        prefilled.forEach(el=> {
             el.checked=true
         })
-        let fourAndTwelve = document.querySelectorAll('.row-1.col-4,.row-1.col-12')
-            fourAndTwelve.forEach(el=> {
-            el.checked=true
-        })
-        let inbetweenNotes = document.querySelectorAll('.row-2.col-1,.row-2.col-2,.row-2.col-3,.row-2.col-5,.row-2.col-6,.row-2.col-7,.row-2.col-9,.row-2.col-10,.row-2.col-11,.row-2.col-13,.row-2.col-14,.row-2.col-15')
-            inbetweenNotes.forEach(el=> {
-            el.checked=true
-            })
         
     }
     generateRows(8);
@@ -91,13 +83,13 @@ window.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.bpm-visual').innerHTML = bpm
             let genre = document.querySelector('.genre')
             if (bpm <= 100) {
-                genre.innerHTML = "Hip Hop/Slower Rock"
+                genre.innerHTML = "Hip Hop/Slow Rock"
             }
             if (100 < bpm  && bpm <= 135) {
                 genre.innerHTML = "Electronic/Pop/Rock"
             }
             if (135 < bpm) {
-                genre.innerHTML = "Techno/Drum and Bass"
+                genre.innerHTML = "Techno/Drum&Bass"
             } 
         })
         document.querySelector('.bpm-swing').addEventListener('input', (e) => {
@@ -137,14 +129,14 @@ window.addEventListener('DOMContentLoaded', () => {
         }) 
 
         //samples
-        const kick = new Tone.Player('/dist/public/audio/kick.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
-        const snare = new Tone.Player('/dist/public/audio/snare.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
-        const hat = new Tone.Player('/dist/public/audio/hatSample.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
-        const openHat = new Tone.Player('/dist/public/audio/openHat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
-        const ride = new Tone.Player('/dist/public/audio/rideCymbal.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
-        const conga = new Tone.Player('/dist/public/audio/congaSample.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
-        const crash = new Tone.Player('/dist/public/audio/crashSample.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
-        const clap = new Tone.Player('/dist/public/audio/clapSample.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const kick = new Tone.Player('./dist/public/audio/kick.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const snare = new Tone.Player('./dist/public/audio/snare.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const hat = new Tone.Player('./dist/public/audio/hatSample.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const openHat = new Tone.Player('./dist/public/audio/openHat.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const ride = new Tone.Player('./dist/public/audio/rideCymbal.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const conga = new Tone.Player('./dist/public/audio/congaSample.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const crash = new Tone.Player('./dist/public/audio/crashSample.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
+        const clap = new Tone.Player('./dist/public/audio/clapSample.wav').connect(bitCrusher).chain(bitCrusher, delay, autoFilter, Tone.Destination);
 
         
 
@@ -221,7 +213,12 @@ window.addEventListener('DOMContentLoaded', () => {
             playing = false
             index = 0
             document.querySelector('.play-pause-button>i').className = 'fas fa-play-circle'
-
+            let alreadyLit = document.querySelectorAll('.lit-up')
+            alreadyLit.forEach(el=> {
+                if (el.classList) {
+                    el.classList.remove('lit-up')
+                }
+            })
         }
 
         const cleartrack = () => {
