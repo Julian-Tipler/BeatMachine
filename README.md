@@ -4,7 +4,7 @@
 
 <br></br>
 ## Brief Overview
-BeatMachine is a great introduction to programming beats for budding musicians. It allows the user to program in custom beats and also apply fun audio effects to alter their sound.
+<a href='https://julian-tipler.github.io/Javascript-Project/'>BeatMachine</a> is a great introduction to programming beats for budding musicians. It allows the user to program in custom beats and also apply fun audio effects to alter their sound.
 <br></br>
 
 ## Technologies
