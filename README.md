@@ -1,6 +1,4 @@
-# BeatMachine
-
-<h1 align="center">FindYourSquad</h1>
+<h1 align="center">BeatMachine</h1>
 
 <br></br>
 ## Brief Overview
