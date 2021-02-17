@@ -20,11 +20,16 @@
 ## Features
 
 * 8 track drum kit
-    * Features 8 custom sounds, sampled then mixed in FL Studio.
+    * Features 8 custom sounds, sampled then mixed in FL Studio. The UI clearly displays pressed buttons designating that that particular sample will be played in time.
+    * A timekeeping light is shown at the top bar of the drum machine, which serves as a visual for musical time. This light synchronizes with the tempo, as well as with playing, pausing, and stopping of the drum pattern.
 
 * Tempo automation knobs
-    * Tone.js' synchronization feature is harnessed to allow the user to set the exact BPM (beats per minute) of the drum track, allowing the playing of multiple genres of music.
+    * Tone.js' synchronization feature is harnessed to allow the user to set the exact BPM (beats per minute) of the drum track, allowing the playing of multiple         genres of music.
     * The "Swing" knob allows the offbeat notes to be played slightly off sync to add a funky, more organic rhythm to the playback.
 
 * Effects knobs
     * The effects knobs automate the output of the drum machine with classic effects including delay, distortion, and lowpass.
+
+* Play/Pause/Stop/Clear buttons
+    * These buttons control the starting and stopping of playback. The play button toggles the playing and pausing of audio playback, while the Stop button resets the playback to the beginning of the drum pattern.
+    * The clear button resets the entire board, allowing the user to program beats from scratch.
