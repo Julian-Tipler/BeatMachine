@@ -4,7 +4,7 @@ window.addEventListener('DOMContentLoaded', () => {
     //samples column
     (() => {
         let drumMachineLeftColumn = document.body.querySelector('.drum-machine-left-column');
-        let names = ['fas fa-drum-steelpan','fas fa-drum','fas fa-compact-disc','fas fa-compact-disc','fas fa-record-vinyl', 'fas fa-record-vinyl', 'fas fa-record-vinyl', 'fas fa-record-vinyl']
+        let names = ['fas fa-drum-steelpan','fas fa-drum','fas fa-compact-disc','fas fa-compact-disc','fas fa-record-vinyl', 'fas fa-coins', 'fas fa-bahai', 'fas fa-sign-language']
             for (let i = 0; i <names.length; i++) {
                 let sampleIcon = document.createElement('i');
                 sampleIcon.className = names[i];

@@ -25408,7 +25408,7 @@ window.addEventListener('DOMContentLoaded', function () {
   //samples column
   (function () {
     var drumMachineLeftColumn = document.body.querySelector('.drum-machine-left-column');
-    var names = ['fas fa-drum-steelpan', 'fas fa-drum', 'fas fa-compact-disc', 'fas fa-compact-disc', 'fas fa-record-vinyl', 'fas fa-record-vinyl', 'fas fa-record-vinyl', 'fas fa-record-vinyl'];
+    var names = ['fas fa-drum-steelpan', 'fas fa-drum', 'fas fa-compact-disc', 'fas fa-compact-disc', 'fas fa-record-vinyl', 'fas fa-coins', 'fas fa-bahai', 'fas fa-sign-language'];
 
     for (var i = 0; i < names.length; i++) {
       var sampleIcon = document.createElement('i');
