@@ -3,7 +3,7 @@
 <br></br>
 ## Brief Overview
 <img src="dist/public/images/main.gif?raw=true" width="1000">
-<a href='https://julian-tipler.github.io/Javascript-Project/'>BeatMachine</a> is a great introduction to programming beats for budding musicians. It allows the user to program in custom beats and also apply fun audio effects to alter their sound.
+<a href='https://julian-tipler.github.io/BeatMachine/'>BeatMachine</a> is a great introduction to programming beats for budding musicians. It allows the user to program in custom beats and also apply fun audio effects to alter their sound.
 <br></br>
 
 ## Technologies
