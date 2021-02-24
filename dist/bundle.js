@@ -25462,6 +25462,11 @@ window.addEventListener('DOMContentLoaded', function () {
   };
 
   generateRows(8);
+  document.querySelectorAll(".button-label, .drum-machine-button, .time-button").forEach(function (item) {
+    item.addEventListener('click', function () {
+      this.blur();
+    });
+  });
 
   function sequencer() {
     document.documentElement.addEventListener("mousedown", function () {

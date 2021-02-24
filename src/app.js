@@ -53,6 +53,12 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     generateRows(8);
 
+    document.querySelectorAll(".button-label, .drum-machine-button, .time-button").forEach( function(item) {
+        item.addEventListener('click', function() {
+            this.blur();
+        })
+    })
+
     function sequencer(){
         document.documentElement.addEventListener("mousedown", () => {
             if (Tone.context.state !== 'running') {
@@ -193,6 +199,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
             index++
         }
+
 
         const playPauseTrack = () => {
             if (playing === false) {
