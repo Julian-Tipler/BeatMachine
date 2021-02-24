@@ -53,6 +53,21 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     generateRows(8);
 
+    document.querySelectorAll(".button-label, .drum-machine-button, .time-button").forEach( (item)=> {
+        item.addEventListener('click', ()=>  {
+            this.blur();
+        })
+    })
+
+
+    document.querySelectorAll(".hidden").forEach(el=> {
+        setTimeout(()=> {
+            el.classList.remove('hidden')
+        },400)
+        
+    })
+        
+
     function sequencer(){
         document.documentElement.addEventListener("mousedown", () => {
             if (Tone.context.state !== 'running') {
@@ -67,7 +82,7 @@ window.addEventListener('DOMContentLoaded', () => {
         Tone.Transport.scheduleRepeat(repeat,'16n')
         Tone.Transport.set({swingSubdivision:'16n'})
 
-        //effects
+    //effects
         const autoFilter = new Tone.AutoFilter(40,40)
         const delay = new Tone.FeedbackDelay("8n")
         const bitCrusher = new Tone.BitCrusher(1)
@@ -193,6 +208,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
             index++
         }
+
 
         const playPauseTrack = () => {
             if (playing === false) {
