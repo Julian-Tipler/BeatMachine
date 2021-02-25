@@ -25403,8 +25403,6 @@ function __classPrivateFieldSet(receiver, privateMap, value) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var Tone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! Tone */ "./node_modules/Tone/build/esm/index.js");
-var _this = undefined;
-
 
 window.addEventListener('DOMContentLoaded', function () {
   //samples column
@@ -25465,8 +25463,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
   generateRows(8);
   document.querySelectorAll(".button-label, .drum-machine-button, .time-button").forEach(function (item) {
+    console.log(item);
     item.addEventListener('click', function () {
-      _this.blur();
+      item.blur();
     });
   });
   document.querySelectorAll(".hidden").forEach(function (el) {
