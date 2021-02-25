@@ -54,8 +54,9 @@ window.addEventListener('DOMContentLoaded', () => {
     generateRows(8);
 
     document.querySelectorAll(".button-label, .drum-machine-button, .time-button").forEach( (item)=> {
+        console.log(item)
         item.addEventListener('click', ()=>  {
-            this.blur();
+            item.blur();
         })
     })
 
