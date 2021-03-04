@@ -13,7 +13,7 @@
 <br></br>
 
 * Fl Studio
-   * Fl Studio is an audio mixing and composition program. The samples used in the drum machine were taken from various drum libraries. Fl Studio's amplitude automation software and equalization plugins were used to optimize the audio files for play together.
+   * Fl Studio is an audio mixing and composition program. The samples used in BeatMachine were taken from various drum libraries. Fl Studio's amplitude automation software and equalization plugins were used to optimize the audio files for play together.
 
 ## Features
 
