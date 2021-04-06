@@ -30,4 +30,4 @@
 
 * Play/Pause/Stop/Clear buttons
     * These buttons control the starting and stopping of playback. The play button toggles the playing and pausing of audio playback, while the Stop button resets the playback to the beginning of the drum pattern.
-    * The clear button resets the entire board, allowing the user to program beats from scratch.
+    * The clear button resets the entire board, allowing the user to program beats from scratch. 
