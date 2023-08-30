@@ -1,92 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BeatMachine</title>
-    <link rel="shortcut icon" type="image/png" href="./dist/public/images/favicon.png" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="styling.css">
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="./dist/public/images/favicon.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styling.css" />
     <script src="./dist/bundle.js"></script>
     <script src="input-knobs.js"></script>
-    <script src="https://kit.fontawesome.com/7c368e1b59.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/7c368e1b59.js"
+      crossorigin="anonymous"
+    ></script>
 
     <meta property="og:title" content="BeatMachine" />
-    <meta property="og:image" content="./dist/public/images/linkedInImage.png"/>
-    <meta property="og:description"
-        content="BeatMachine is a great introduction to programming beats for budding musicians. It allows the user to program in custom beats and also apply fun audio effects to alter their sound." />
-    <meta property="og:url" content="https://julian-tipler.github.io/Javascript-Project/" />
-
-</head>
-<body>
+    <meta
+      property="og:image"
+      content="./dist/public/images/linkedInImage.png"
+    />
+    <meta
+      property="og:description"
+      content="BeatMachine is a great introduction to programming beats for budding musicians. It allows the user to program in custom beats and also apply fun audio effects to alter their sound."
+    />
+    <meta
+      property="og:url"
+      content="https://julian-tipler.github.io/Javascript-Project/"
+    />
+  </head>
+  <body>
     <h1>BeatMachine</h1>
-    <div class="navbar">
-    </div>
+    <div class="navbar"></div>
     <!-- <script type="module" src="./src/app.js"></script> -->
-    <div class=drum-machine-body>
-        <div class="effects-controls hidden">
-            <div class="bpm">
-                <div class='bpm-slider-and-genre knob-unit'>
-                        <div>Tempo:<div class="bpm-visual">80</div></div>
-                    <input type="range" min="70" max="160" value="80" class="bpm-wetness input-knob">
-                    <div class="genre">
-                        Hip Hop/Slow Rock
-                    </div>
-                </div>
-                <div class='swing knob-unit'>
-                    <div>Swing:</div>
-                    <input type="range" min="0" max="50" value="0" class="bpm-swing input-knob">
-                </div>
+    <div class="drum-machine-body">
+      <div class="effects-controls hidden">
+        <div class="bpm">
+          <div class="bpm-slider-and-genre knob-unit">
+            <div>
+              Tempo:
+              <div class="bpm-visual">80</div>
             </div>
-            <div class="non-bpm">
-                <div class="auto-filter knob-unit">
-                    <div>AutoFilter:</div>
-                    <input type="range" min="1" max="100" value="100" class="auto-filter-frequency input-knob">
-                </div>
-                <div class="bitcrush knob-unit">
-                    <div>Bitcrusher:</div>
-                    <input type="range" min="0" max="50" value="0" class="bitcrush-wetness input-knob">
-                </div>
-                <div class="delay knob-unit">
-                    <div>Delay:</div>
-                    <input type="range" min="0" max="50" value="0" class="delay-wetness input-knob">
-                </div>
-            </div>
+            <input
+              type="range"
+              min="70"
+              max="160"
+              value="80"
+              class="bpm-wetness input-knob"
+            />
+            <div class="genre">Hip Hop/Slow Rock</div>
+          </div>
+          <div class="swing knob-unit">
+            <div>Swing:</div>
+            <input
+              type="range"
+              min="0"
+              max="50"
+              value="0"
+              class="bpm-swing input-knob"
+            />
+          </div>
         </div>
-        <div class="play-pause-stop-buttons">
-            <button class="play-pause-button time-button">
-                <i class="fas fa-play-circle"></i>
-            </button>
-            <button class="stop-button time-button">
-                <i class="fas fa-stop-circle"></i>
-            </button>
-            <button class='clear-button time-button'>
-                clear
-            </button>
+        <div class="non-bpm">
+          <div class="auto-filter knob-unit">
+            <div>AutoFilter:</div>
+            <input
+              type="range"
+              min="1"
+              max="100"
+              value="100"
+              class="auto-filter-frequency input-knob"
+            />
+          </div>
+          <div class="bitcrush knob-unit">
+            <div>Bitcrusher:</div>
+            <input
+              type="range"
+              min="0"
+              max="50"
+              value="0"
+              class="bitcrush-wetness input-knob"
+            />
+          </div>
+          <div class="delay knob-unit">
+            <div>Delay:</div>
+            <input
+              type="range"
+              min="0"
+              max="50"
+              value="0"
+              class="delay-wetness input-knob"
+            />
+          </div>
         </div>
-        <div class="drum-machine-most">
-            <div class="drum-machine-left-column">
-                
-            </div>
-                <div class="drum-machine-board">
-                    <div class="drum-machine-top-row">
-        
-                    </div>
-                    <div class="drum-machine-buttons">
-                        
-                    </div>
-                </div>
+      </div>
+      <div class="play-pause-stop-buttons">
+        <button class="play-pause-button time-button">
+          <i class="fas fa-play-circle"></i>
+        </button>
+        <button class="stop-button time-button">
+          <i class="fas fa-stop-circle"></i>
+        </button>
+        <button class="clear-button time-button">clear</button>
+      </div>
+      <div class="drum-machine-most">
+        <div class="drum-machine-left-column"></div>
+        <div class="drum-machine-board">
+          <div class="drum-machine-top-row"></div>
+          <div class="drum-machine-buttons"></div>
         </div>
+      </div>
     </div>
-        <footer class='footer'>
-            <a href="https://github.com/Julian-Tipler" class="links" target="_blank" rel="noreferrer">
-                <i class="fab fa-github"></i>                
-                <p>Julian Lawrence Tipler</p>
-            </a>
-            <a href="https://www.linkedin.com/in/julian-t-87a2a0a4/" class="links" target="_blank" rel="noreferrer">
-                <i class="fab fa-linkedin"></i>                
-                <p>Julian Lawrence Tipler</p>
-            </a>
-        </footer>
-</body>
+    <footer class="footer">
+      <a
+        href="https://github.com/Julian-Tipler"
+        class="links"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <i class="fab fa-github"></i>
+        <p>Julian Lawrence Tipler</p>
+      </a>
+      <a
+        href="https://www.linkedin.com/in/julian-t-87a2a0a4/"
+        class="links"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <i class="fab fa-linkedin"></i>
+        <p>Julian Lawrence Tipler</p>
+      </a>
+    </footer>
+  </body>
 </html>

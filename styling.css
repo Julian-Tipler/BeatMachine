@@ -25,6 +25,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 6vh;
 }
 
 .effects-controls {
@@ -158,7 +159,7 @@ div[class^="full-row"] {
 
 
 .footer {
-    position:absolute;
+    position: fixed;
     width: 100vw;
     bottom: 0px;
     height: 6vh;
