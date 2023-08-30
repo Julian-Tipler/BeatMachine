@@ -159,7 +159,7 @@ div[class^="full-row"] {
 
 
 .footer {
-    position: fixed;
+    /* position: fixed; */
     width: 100vw;
     bottom: 0px;
     height: 6vh;
