@@ -1,5 +1,11 @@
 <h1 align="center">BeatMachine</h1>
 
+## Table of Contents
+
+- [Overview](#Overview)
+- [Technologies](#Technologies)
+- [Features](#Features)
+
 <br></br>
 ## Overview
 <img src="dist/public/images/main.gif?raw=true" width="1000">
