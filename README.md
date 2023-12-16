@@ -1,15 +1,16 @@
 <h1 align="center">BeatMachine</h1>
 
+<p align="center">
+<a href='https://julian-tipler.github.io/BeatMachine/'>BeatMachine</a> is a great introduction to programming beats for budding musicians. It allows the user to program in custom beats and also apply fun audio effects to alter their sound.
+</p>
+<p align="center"><img src="dist/public/images/main.gif?raw=true" width="1000"></p>
+<br></br>
 ## Table of Contents
 
 - [Overview](#Overview)
 - [Technologies](#Technologies)
 - [Features](#Features)
   
-## Overview
-<img src="dist/public/images/main.gif?raw=true" width="1000">
-<a href='https://julian-tipler.github.io/BeatMachine/'>BeatMachine</a> is a great introduction to programming beats for budding musicians. It allows the user to program in custom beats and also apply fun audio effects to alter their sound.
-<br></br>
 
 ## Technologies
 
